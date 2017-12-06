@@ -9744,5 +9744,6 @@ a.text-dark:hover {
   color: #3097D1;
   text-decoration: none;
   background-color: transparent;
+  cursor: pointer;
 }
 

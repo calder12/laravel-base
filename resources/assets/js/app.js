@@ -20,3 +20,18 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
+
+
+$(document).ready(function() {
+  if( location.pathname === '/users' ) {
+    $(".delete-button").on("click", function(e) {
+      var elementId = $(this).data('elementid')
+      e.preventDefault()
+      if (confirm("Press a button!") == true) {
+        $("#delete-" + elementId).submit()
+      } else {
+         return false
+      }
+    })
+  }
+})

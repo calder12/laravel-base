@@ -14,10 +14,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $user = \Auth::user();
-        User::created(function ($user) {
-            $user->assignRole('user');
-        });
+        // $user = \Auth::user();
+        // User::created(function ($user) {
+        //     // echo '<xmp>';print_r($user->getRoleNames());die;
+        //     $user->assignRole('user');
+        // });
     }
 
     /**

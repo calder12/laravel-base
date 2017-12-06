@@ -25,9 +25,9 @@ class DatabaseSeeder extends Seeder
         }
         $this->command->info('Default Permissions added.');
         // Ask to confirm to assign admin or user role
-        if ($this->command->confirm('Create Roles for user, default is admin and user? [y|N]', true)) {
+        if ($this->command->confirm('Create Roles for user, default is admin, editor, user and subscriber? [y|N]', true)) {
             // Ask for roles from input
-            $roles = $this->command->ask('Enter roles in comma separate format.', 'Admin,User');
+            $roles = $this->command->ask('Enter roles in comma separate format.', 'Admin,Editor,Author,Subscriber');
             // Explode roles
             $rolesArray = explode(',', $roles);
             // add roles
@@ -37,9 +37,15 @@ class DatabaseSeeder extends Seeder
                     // assign all permissions to admin role
                     $role->permissions()->sync(Permission::all());
                     $this->command->info('Admin will have full rights');
+                } else if ($role->name == 'Editor') {
+                    // for Editors, give access to view only
+                    $role->permissions()->sync(Permission::where('name', 'LIKE', 'view_%')->orWhere('name', 'LIKE', 'edit_%')->get());
+                } else if ($role->name == 'Author') {
+                    // for others, User access to view only
+                    $role->permissions()->sync(Permission::where('name', 'LIKE', 'view_%')->orWhere('name', 'LIKE', 'edit_%')->get());
                 } else {
-                    // for others, give access to view only
-                    $role->permissions()->sync(Permission::where('name', 'LIKE', 'view_%')->get());
+                    // for others, no access to back end
+                    $role->permissions()->sync(Permission::where('name', '=', 'subscriber')->get());
                 }
                 // create one user for each role
                 $this->createUser($role);
@@ -58,7 +64,18 @@ class DatabaseSeeder extends Seeder
      */
     private function createUser($role)
     {
-        $user = factory(User::class)->create();
+        if( $role->name == 'Admin' ) {
+            $user = new User;
+            $user->name = 'Rick Calder';
+            $user->email = 'rick@calder.io';
+            $user->password = Hash::make('secret');
+            $user->remember_token = str_random(10);
+
+            $user->save();
+        } else {
+            $user = factory(User::class)->create();
+        }
+        
         $user->assignRole($role->name);
         if( $role->name == 'Admin' ) {
             $this->command->info('Admin login details:');

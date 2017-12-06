@@ -25,8 +25,8 @@
           <td>{{ $user->roles()->pluck('name')->implode(' ') }}</td>
           <td>
             <a href="{{ route('users.edit', $user->id) }}">Edit</a>
-            {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'class' => 'form-inline', 'style' => 'display:inline-block; margin-left: 10px;' ]) !!}
-            {!! Form::submit('Delete', ['class' => 'btn-link']) !!}
+            {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'class' => 'form-inline', 'style' => 'display:inline-block; margin-left: 10px;', 'id' => 'delete-' . $user->id ]) !!}
+            {!! Form::submit('Delete', ['class' => 'btn-link delete-button', 'data-elementId=' . $user->id ]) !!}
             {!! Form::close() !!}
           </td>
         </tr>

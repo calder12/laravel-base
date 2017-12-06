@@ -2,8 +2,6 @@
 @section('content')
   <div class="col-md-9">
   <h1><i class="fa fa-key"></i>Permissions Management
-    <a href="{{ route('users.index') }}" class="btn btn-default pull-right">Users</a>
-    <a href="{{ route('roles.index') }}" class="btn btn-default pull-right">Roles</a>
     <a href="{{ URL::to('permissions/create') }}" class="btn btn-success">Add Permission</a>
   </h1>
   <hr>
@@ -20,9 +18,9 @@
         <tr>
           <td>{{ $permission->name }}</td> 
           <td>
-            <a href="{{ URL::to('permissions/'.$permission->id.'/edit') }}" class="btn btn-warning pull-left">Edit</a>
-            {!! Form::open(['method' => 'DELETE', 'route' => ['permissions.destroy', $permission->id] ]) !!}
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+            <a href="{{ route('permissions.edit', $permission->id) }}">Edit</a>
+            {!! Form::open(['method' => 'DELETE', 'route' => ['permissions.destroy', $permission->id], 'class' => 'form-inline', 'style' => 'display:inline-block; margin-left: 10px;', 'id' => 'delete-' . $permission->id ]) !!}
+            {!! Form::submit('Delete', ['class' => 'btn-link delete-button', 'data-elementId=' . $permission->id ]) !!}
             {!! Form::close() !!}
           </td>
         </tr>

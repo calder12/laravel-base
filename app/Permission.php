@@ -22,6 +22,13 @@ class Permission extends \Spatie\Permission\Models\Permission {
       'addPosts',
       'editPosts',
       'deletePosts',
+
+      'viewPages',
+      'addPages',
+      'editPages',
+      'deletePages',
+
+      'subscriber'
     ];
   }
 }

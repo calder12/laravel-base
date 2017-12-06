@@ -20,10 +20,11 @@
 //make a button a regular link
 
 .btn-link {
-    background:none!important;
-    border:none; 
-    padding:0!important;
-    color: #3097D1;
-    text-decoration: none;
-    background-color: transparent;
+  background:none!important;
+  border:none; 
+  padding:0!important;
+  color: #3097D1;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
 }
