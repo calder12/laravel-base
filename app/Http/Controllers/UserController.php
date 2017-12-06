@@ -44,7 +44,7 @@ class UserController extends Controller
         if($request->roles <> ''){
             $user->roles()->attach($request->roles);
         }
-        return redirect()->route('admin.users.index')->with('success','User has been created');            
+        return redirect()->route('users.index')->with('success','User has been created');            
         
     }
     public function edit($id) {
@@ -85,7 +85,7 @@ class UserController extends Controller
     public function destroy($id) {
         $user = User::findOrFail($id); 
         $user->delete();
-        return redirect()->route('admin.users.index')->with('success',
+        return redirect()->route('users.index')->with('success',
              'User successfully deleted.');
     }
 }

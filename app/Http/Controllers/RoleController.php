@@ -44,7 +44,7 @@ class RoleController extends Controller
       if($request->permissions <> ''){
         $role->permissions()->attach($request->permissions);
       }
-      return redirect()->route('admin.roles.index')->with('success','Roles added successfully');
+      return redirect()->route('roles.index')->with('success','Roles added successfully');
     }
     
     public function edit($id) {

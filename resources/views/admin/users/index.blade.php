@@ -24,9 +24,9 @@
           <td>{{ $user->created_at->format('F d, Y h:ia') }}</td>
           <td>{{ $user->roles()->pluck('name')->implode(' ') }}</td>
           <td>
-            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">Edit</a>
-            {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id] ]) !!}
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+            <a href="{{ route('users.edit', $user->id) }}">Edit</a>
+            {!! Form::open(['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'class' => 'form-inline', 'style' => 'display:inline-block; margin-left: 10px;' ]) !!}
+            {!! Form::submit('Delete', ['class' => 'btn-link']) !!}
             {!! Form::close() !!}
           </td>
         </tr>
