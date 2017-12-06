@@ -1,8 +1,7 @@
-{{-- \resources\views\roles\create.blade.php --}}
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title', '| Create Role')
 @section('content')
-<div class='col-lg-4 col-lg-offset-4'>
+<div class='col-md-9'>
   <h1><i class='fa fa-key'></i> Create Role</h1>
   <hr>
   {{ Form::open(array('url' => 'roles')) }}

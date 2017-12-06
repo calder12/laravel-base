@@ -1,8 +1,6 @@
-{{-- \resources\views\permissions\index.blade.php --}}
-@extends('layouts.app')
-@section('title', '| Permissions')
+@extends('layouts.admin')
 @section('content')
-<div class="col-md-10 col-md-offset-1">
+  <div class="col-md-9">
   <h1><i class="fa fa-key"></i>Permissions Management
     <a href="{{ route('users.index') }}" class="btn btn-default pull-right">Users</a>
     <a href="{{ route('roles.index') }}" class="btn btn-default pull-right">Roles</a>

@@ -1,8 +1,7 @@
-{{-- \resources\views\users\create.blade.php --}}
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title', '| Create User')
 @section('content')
-<div class='col-lg-4 col-lg-offset-4'>
+<div class='col-lg-9'>
   <h1><i class='fa fa-user-plus'></i> Create User</h1>
   <hr>
   {!! Form::open(array('url' => 'users')) !!}
@@ -28,7 +27,7 @@
     {!! Form::label('password', 'Confirm Password') !!}<br>
     {!! Form::password('password_confirmation', array('class' => 'form-control')) !!}
   </div>
-  {!! Form::submit('Register', array('class' => 'btn btn-primary')) !!}
+  {!! Form::submit('Create', array('class' => 'btn btn-primary')) !!}
   {!! Form::close() !!}
 </div>
 @endsection

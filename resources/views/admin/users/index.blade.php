@@ -1,11 +1,7 @@
-{{-- \resources\views\users\index.blade.php --}}
-@extends('layouts.app')
-@section('title', '| Users')
+@extends('layouts.admin')
 @section('content')
-<div class="col-lg-10 col-lg-offset-1">
+<div class="col-md-9">
   <h1><i class="fa fa-users"></i> User Management 
-    <a href="{{ route('roles.index') }}" class="btn btn-default pull-right">Roles</a>
-    <a href="{{ route('permissions.index') }}" class="btn btn-default pull-right">Permissions</a>
     <a href="{{ route('users.create') }}" class="btn btn-success">Add User</a>
   </h1>
   <hr>

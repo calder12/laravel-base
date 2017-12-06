@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title', '| Update Role')
 @section('content')
-<div class='col-md-4 col-md-offset-4'>
+<div class='col-md-9'>
   <h1><i class='fa fa-key'></i> Update Role: {{$role->name}}</h1>
   <hr>
   {{ Form::model($role, array('route' => array('roles.update', $role->id), 'method' => 'PUT')) }}

@@ -1,7 +1,6 @@
-@extends('layouts.app')
-@section('title', '| Create Permission')
+@extends('layouts.admin')
 @section('content')
-<div class='col-md-4 col-md-offset-4'>
+  <div class="col-md-9">
   <h1><i class='fa fa-key'></i> Create New Permission</h1>
   <br>
   {{ Form::open(array('url' => 'permissions')) }}

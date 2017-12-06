@@ -1,8 +1,7 @@
-{{-- \resources\views\users\edit.blade.php --}}
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title', '| Update User')
 @section('content')
-<div class='col-lg-4 col-lg-offset-4'>
+<div class='col-md-9'>
   <h1><i class='fa fa-user-plus'></i> Update {{$user->name}}</h1>
   <hr>
   {{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT')) }}

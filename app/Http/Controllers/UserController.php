@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Role;
 use App\Permission;
+use Illuminate\Support\Facades\Input;
 class UserController extends Controller
 {
     /**
@@ -52,21 +53,33 @@ class UserController extends Controller
         return view('admin.users.edit', compact('user', 'roles')); 
     }
     public function update(Request $request, $id) {
+
         $user = User::findOrFail($id);   
-        $this->validate($request, [
-            'name'=>'required|max:120',
-            'email'=>'required|email|unique:users,email,'.$id,
-            'password'=>'required|min:6|confirmed'
-        ]);
-        $input = $request->except('roles');
+        // echo '<xmp>';print_r(Input::get());die;
+        if( Input::get('password') === '' or Input::get('password') === null) {
+            $this->validate($request, [
+                'name'=>'required|max:120',
+                'email'=>'required|email|unique:users,email,'.$id
+            ]);
+
+            $input = $request->except(['roles', 'password']);
+        } else {
+            $this->validate($request, [
+                'name'=>'required|max:120',
+                'email'=>'required|email|unique:users,email,'.$id,
+                'password'=>'required|min:6|confirmed'
+            ]);
+
+            $input = $request->except('roles');
+        }
+        
         $user->fill($input)->save();
         if ($request->roles <> '') {
             $user->roles()->sync($request->roles);        
-        }        
-        else {
+        } else {
             $user->roles()->detach(); 
         }
-        return redirect()->route('admin.users.index')->with('success',
+        return redirect()->route('users.index')->with('success',
              'User successfully updated.');
     }
     public function destroy($id) {

@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title', '| Roles')
 @section('content')
-<div class="col-lg-10 col-lg-offset-1">
+<div class='col-md-9'>
   <h1><i class="fa fa-key"></i> Roles Management
     <a href="{{ route('users.index') }}" class="btn btn-default pull-right">Users</a>
     <a href="{{ route('permissions.index') }}" class="btn btn-default pull-right">Permissions</a>
